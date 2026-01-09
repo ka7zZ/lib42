@@ -6,14 +6,16 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:43:16 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/15 17:38:19 by aghergut         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:41:53 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+#include "strtoint.h"
+
+long	ft_atoi(const char *str)
 {
-	int	number;
-	int	kind;
+	long	number;
+	int		kind;
 
 	number = 0;
 	kind = 0;
@@ -32,7 +34,9 @@ int	ft_atoi(const char *str)
 		number += *str - 48;
 		str++;
 	}
-	if (kind % 2 == 1)
+	if (kind % 2 == 1 && number * (-1) >= INT_MIN)
 		return (-number);
-	return (number);
+	else if (number <= INT_MAX)
+		return (number);
+	return (LONG_MAX);
 }

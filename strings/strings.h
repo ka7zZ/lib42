@@ -6,12 +6,12 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:59:34 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 16:11:18 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:11:51 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRING_H
-# define STRING_H
+#ifndef STRINGS_H
+# define STRINGS_H
 
 # include <stdlib.h>
 # include <stddef.h>
@@ -43,8 +43,11 @@ void	ft_strncat(char *dest, char *src, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
-// splitting 
+char	*ft_strjoin_free(char const *s1, char const *s2);
+char	*ft_appendchar(char *str, char ch);
+// splitting or tokenizing
 char	**ft_split(char *s, char c);
+char	*ft_strtok(char *str, const char *delim);
 // advanced
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));

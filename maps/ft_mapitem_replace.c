@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_mapitem_replace.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 13:45:22 by aghergut          #+#    #+#             */
-/*   Updated: 2025/01/04 15:54:29 by aghergut         ###   ########.fr       */
+/*   Created: 2025/08/01 19:08:38 by aghergut          #+#    #+#             */
+/*   Updated: 2025/11/03 21:20:28 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
+#include "maps.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new_node)
+int	ft_mapitem_replace(char ***map, char *item, size_t idx)
 {
-	t_list	*temp;
+	char	*temp;
 
-	if (!lst || !new_node)
-		return ;
-	if (*lst == NULL)
-		*lst = new_node;
-	else
-	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new_node;
-	}
+	if (!map || !*map || ft_mapsize(*map) <= idx)
+		return (0);
+	temp = ft_strdup(item);
+	if (!temp)
+		return (0);
+	if ((*map)[idx])
+		free((*map)[idx]);
+	(*map)[idx] = temp;
+	return (1);
 }

@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_mapfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 13:45:22 by aghergut          #+#    #+#             */
-/*   Updated: 2025/01/04 15:54:29 by aghergut         ###   ########.fr       */
+/*   Created: 2025/08/01 18:55:43 by aghergut          #+#    #+#             */
+/*   Updated: 2025/11/04 00:28:12 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
+#include "maps.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new_node)
+void	ft_mapfree(char ***map)
 {
-	t_list	*temp;
+	int	i;
 
-	if (!lst || !new_node)
+	if (!*map)
 		return ;
-	if (*lst == NULL)
-		*lst = new_node;
-	else
+	i = 0;
+	while ((*map)[i])
 	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new_node;
+		free((*map)[i]);
+		i++;
 	}
+	free(*map);
+	*map = NULL;
 }

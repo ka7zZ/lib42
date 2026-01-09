@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:20:09 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 16:25:44 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/09 12:32:18 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printchar(t_flags *flags, char ch)
 {
-	if (flags->zpad || (flags->width && !flags->left))
+	if (flags->zpad)
 	{
 		ft_fill(flags->width, 1, ' ');
 		ft_putchar_fd(ch, 1);

@@ -6,12 +6,12 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:20:24 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 15:57:58 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/12/21 18:10:04 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef LISTS_H
+# define LISTS_H
 
 # include <stdlib.h>
 # include <stddef.h>
@@ -21,12 +21,12 @@
 // lists
 typedef struct s_list
 {
-	char			*content;
+	void			*content;
 	struct s_list	*next;
 }	t_list;
 
 // new
-t_list	*ft_lstnew(char *content);
+t_list	*ft_lstnew(void *content);
 // size
 size_t	ft_lstsize(t_list *lst);
 // getting last element

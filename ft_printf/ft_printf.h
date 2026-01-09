@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:52:14 by aghergut          #+#    #+#             */
-/*   Updated: 2024/12/16 15:23:07 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/09 12:29:47 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,17 @@
 // printf flags
 typedef struct s_flags
 {
-	int				prec;
-	int				precw;
-	int				space;
-	int				sign;
-	int				left;
-	int				zpad;
-	int				alt;
-	int				width;
+	int	prec;
+	int	precw;
+	int	space;
+	int	sign;
+	int	left;
+	int	zpad;
+	int	alt;
+	int	width;
 }	t_flags;
 
 const char	*ft_flagadd(va_list *args, t_flags *flags, const char *format);
-void		ft_flagset(t_flags *flags);
 int			ft_flagalt(t_flags *flags, char type);
 int			ft_flagsign(t_flags *flags, char type, int n);
 int			ft_flagspace(t_flags *flags, char type, int n);
@@ -48,9 +47,9 @@ int			ft_printpxx(va_list *args, t_flags *flags, char type);
 int			ft_printstr(t_flags *flags, char *content);
 int			ft_printu(t_flags *flags, unsigned int number);
 int			ft_printf(const char *format, ...);
-int         ft_fill(int cond1, int cond2, char fill);
-int         ft_gethex(unsigned long long mem, char type);
-int         ft_memlen(unsigned long long mem);
-int	        ft_numlen(long n);
+int			ft_fill(int cond1, int cond2, char fill);
+int			ft_gethex(unsigned long long mem, char type);
+int			ft_memlen(unsigned long long mem);
+int			ft_numlen(long n);
 
 #endif

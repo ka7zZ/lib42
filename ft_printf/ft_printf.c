@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:16:59 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 16:27:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/09 13:39:06 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ static int	ft_parse_values(va_list *args, t_flags *flags, char type)
 	if (type == 'd' || type == 'i')
 		return (ft_printint(flags, va_arg(*args, int), type));
 	if (type == '%')
-	{
-		ft_putchar_fd('%', 1);
-		return (1);
-	}
+		return (ft_printchar(flags, '%'));
 	return (0);
 }
 
 static int	ft_parse_main(va_list *args, t_flags *flags, const char *format)
 {
-	int		width;
+	int	width;
 
 	width = 0;
 	while (*format)
 	{
-		if (*format == '%' && *(++format))
+		if (*format == '%' && *(format + 1))
 		{
+			format++;
+			ft_memset(flags, 0, sizeof(t_flags));
 			format = ft_flagadd(args, flags, format);
-			width += ft_parse_values(args, flags, *format);
+			if (*format)
+				width += ft_parse_values(args, flags, *format);
 		}
 		else
 		{
@@ -56,9 +56,9 @@ static int	ft_parse_main(va_list *args, t_flags *flags, const char *format)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list		pv;
-	t_flags		*flags;
-	int			width;
+	va_list	pv;
+	t_flags	*flags;
+	int		width;
 
 	flags = malloc(sizeof(t_flags));
 	if (!flags)

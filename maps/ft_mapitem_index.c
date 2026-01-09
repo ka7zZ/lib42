@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_mapitem_index.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 13:45:22 by aghergut          #+#    #+#             */
-/*   Updated: 2025/01/04 15:54:29 by aghergut         ###   ########.fr       */
+/*   Created: 2025/08/01 20:12:06 by aghergut          #+#    #+#             */
+/*   Updated: 2025/11/03 21:35:20 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
+#include "maps.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new_node)
+int	ft_mapitem_index(char **map, char *str)
 {
-	t_list	*temp;
+	size_t	mv_len;
+	size_t	sv_len;
+	size_t	idx;
 
-	if (!lst || !new_node)
-		return ;
-	if (*lst == NULL)
-		*lst = new_node;
-	else
+	if (!map || !*map || !str || !*str)
+		return (-1);
+	sv_len = right_length(str);
+	idx = 0;
+	while (map[idx])
 	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new_node;
+		mv_len = right_length(map[idx]);
+		if (mv_len == sv_len && !ft_strncmp(map[idx], str, mv_len))
+			return (idx);
+		idx++;
 	}
+	return (-1);
 }

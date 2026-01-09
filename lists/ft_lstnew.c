@@ -6,13 +6,13 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:46:10 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 15:33:49 by aghergut         ###   ########.fr       */
+/*   Updated: 2025/11/03 19:27:47 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lists.h"
 
-t_list	*ft_lstnew(char *content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
 
@@ -25,7 +25,5 @@ t_list	*ft_lstnew(char *content)
 		node->next = NULL;
 		return (node);
 	}
-	node->content = NULL;
-	node->next = NULL;
-	return (node);
+	return (free(node), NULL);
 }

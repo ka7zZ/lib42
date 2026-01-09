@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_appendchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 13:45:22 by aghergut          #+#    #+#             */
-/*   Updated: 2025/01/04 15:54:29 by aghergut         ###   ########.fr       */
+/*   Created: 2025/10/07 13:50:23 by aghergut          #+#    #+#             */
+/*   Updated: 2026/01/09 14:11:33 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
+#include "strings.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new_node)
+char	*ft_appendchar(char *str, char ch)
 {
-	t_list	*temp;
+	char	*new;
+	size_t	new_size;
+	size_t	i;
 
-	if (!lst || !new_node)
-		return ;
-	if (*lst == NULL)
-		*lst = new_node;
+	if (!str || !*str)
+		new_size = 1;
 	else
+		new_size = ft_strlen(str) + 1;
+	new = malloc((new_size + 1) * sizeof(char));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (str && str[i] != '\0')
 	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new_node;
+		new[i] = str[i];
+		i++;
 	}
+	new[i++] = ch;
+	new[i] = '\0';
+	free(str);
+	str = NULL;
+	return (new);
 }

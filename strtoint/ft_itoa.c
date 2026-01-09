@@ -6,19 +6,23 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:31:15 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/15 18:11:48 by aghergut         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:56:04 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "strtoint.h"
 
-static int	v_length(int value)
+static int	v_length(long value)
 {
 	int	len;
 
+	if (value < INT_MIN || value > INT_MAX)
+		return (0);
 	len = 1;
 	if (value < 10)
 		return (len);
+	if (value < 0)
+		value *= -1;
 	while (value > 9)
 	{
 		value /= 10;
@@ -54,8 +58,10 @@ static char	*v_str(int len, int value, int kind)
 	return (number);
 }
 
-char	*ft_itoa(int value)
+char	*ft_itoa(long value)
 {
+	if (!v_length(value))
+		return (NULL);
 	if (value == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if (value < 0)

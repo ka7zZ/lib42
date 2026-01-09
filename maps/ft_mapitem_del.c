@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_mapitem_del.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 14:04:50 by aghergut          #+#    #+#             */
-/*   Updated: 2025/10/04 12:37:57 by aghergut         ###   ########.fr       */
+/*   Created: 2025/08/01 19:16:51 by aghergut          #+#    #+#             */
+/*   Updated: 2025/11/03 23:18:50 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "strings.h"
+#include "maps.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_mapitem_del(char ***map_ref, size_t del_idx)
 {
-	unsigned char	*cs1;
-	unsigned char	*cs2;
-	size_t			i;
+	char	**new_map;
+	char	**temp;
+	size_t	length;
 
-	if (n == 0 || !s1 || !s2)
+	if (!map_ref || !*map_ref)
 		return (0);
-	cs1 = (unsigned char *)s1;
-	cs2 = (unsigned char *)s2;
-	i = 0;
-	while (i < n && cs1[i] == cs2[i] && cs1[i] != '\0')
-		i++;
-	if (i == n)
+	temp = *map_ref;
+	length = ft_mapsize(temp);
+	if (del_idx >= length)
 		return (0);
-	return (cs1[i] - cs2[i]);
+	new_map = (char **)malloc(length * sizeof(char *));
+	if (!new_map)
+		return (0);
+	if (!copy_elements(temp, new_map, del_idx))
+		return (ft_mapfree(&new_map), 0);
+	ft_mapfree(map_ref);
+	*map_ref = new_map;
+	return (1);
 }

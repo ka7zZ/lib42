@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_mapitem_add.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 13:45:22 by aghergut          #+#    #+#             */
-/*   Updated: 2025/01/04 15:54:29 by aghergut         ###   ########.fr       */
+/*   Created: 2025/08/02 10:49:39 by aghergut          #+#    #+#             */
+/*   Updated: 2025/11/04 00:30:42 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
+#include "maps.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new_node)
+int	ft_mapitem_add(char ***map_ref, char *item)
 {
-	t_list	*temp;
+	char	**map;
+	char	**new;
 
-	if (!lst || !new_node)
-		return ;
-	if (*lst == NULL)
-		*lst = new_node;
-	else
+	if (!map_ref)
+		return (0);
+	map = *map_ref;
+	if (map == NULL)
 	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new_node;
+		*map_ref = ft_mapnew(item);
+		if (*map_ref == NULL)
+			return (0);
+		return (1);
 	}
+	new = create_new(map, item);
+	if (new != NULL)
+	{
+		ft_mapfree(map_ref);
+		*map_ref = new;
+		return (1);
+	}
+	return (0);
 }

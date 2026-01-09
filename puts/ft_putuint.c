@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:14:34 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 16:11:43 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/09 13:27:31 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_putuint(unsigned int value, int length)
 {
+	char	c;
+
 	if (length > 0)
 	{
 		ft_putuint(value / 10, length - 1);
-		ft_putnbr_fd(value % 10, 1);
+		c = (value % 10) + '0';
+		write(1, &c, 1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:46:30 by aghergut          #+#    #+#             */
-/*   Updated: 2024/12/16 15:22:16 by aghergut         ###   ########.fr       */
+/*   Updated: 2025/08/01 19:06:29 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@
 # include "puts/puts.h"
 # include "get_next_line/get_next_line.h"
 # include "ft_printf/ft_printf.h"
+# include "maps/maps.h"
 
 #endif

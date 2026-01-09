@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:21:19 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 16:25:54 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/09 12:31:22 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,8 @@ int	ft_printint(t_flags *flags, int number, char type)
 		return (ft_precdi(flags, type, number));
 	if (number < 0)
 		flags->sign = 1;
-	if (!flags->zpad && !flags->left && flags->width)
-	{
-		if (number < 0)
-			length += ft_fill(flags->width, length + 1, ' ');
-		else
-			length += ft_fill(flags->width, length, ' ');
-	}
+	if (!flags->left && !flags->zpad)
+		length += ft_fill(flags->width, length, ' ');
 	length += ft_flagsign(flags, type, number);
 	if (flags->zpad)
 		length += ft_fill(flags->width, length, '0');

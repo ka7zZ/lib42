@@ -6,39 +6,11 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:05:02 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 15:32:27 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:12:45 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-static char	*ft_strjoin_free(char const *s1, char const *s2)
-{
-	size_t	i;
-	size_t	join_i;
-	char	*join;
-
-	if (!s2)
-		return (NULL);
-	if (!s1)
-	{
-		join = ft_substr(s2, 0, ft_strlen(s2));
-		if (!join)
-			return (free((void *)s2), NULL);
-		return (free((void *)s2), join);
-	}
-	join = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) +1) * sizeof(char));
-	if (!join)
-		return (free((void *)s1), free((void *)s2), NULL);
-	join_i = -1;
-	while (s1[++join_i] != '\0')
-		join[join_i] = s1[join_i];
-	i = 0;
-	while (s2[i] != '\0')
-		join[join_i++] = s2[i++];
-	join[join_i] = '\0';
-	return (free((void *)s1), free((void *)s2), join);
-}
 
 static int	ft_append_nodes(t_list **lst, int fd, int *reading)
 {
@@ -56,7 +28,7 @@ static int	ft_append_nodes(t_list **lst, int fd, int *reading)
 			break ;
 		line[*reading] = '\0';
 		if (line && ft_strlen(line) > 0)
-			ft_lstadd_back(lst, ft_lstnew(ft_substr(line, 0, ft_strlen(line))));
+			ft_lstadd_back(lst, ft_lstnew(ft_strdup(line)));
 		if (ft_strchr(line, '\n'))
 			break ;
 	}
@@ -67,23 +39,25 @@ static char	*ft_line(t_list **h, t_list *buf, char *res)
 {
 	size_t	idx;
 	char	*ptr;
+	char	*temp;
 
 	while (*h)
 	{
 		buf = (*h)->next;
-		if ((*h)->content && ft_strchr((*h)->content, '\n'))
+		temp = (char *)(*h)->content;
+		if (temp && ft_strchr(temp, '\n'))
 		{
-			idx = ft_strchr((*h)->content, '\n') - (*h)->content + 1;
-			res = ft_strjoin_free(res, ft_substr((*h)->content, 0, idx));
-			if (idx == ft_strlen((*h)->content))
-				return (ft_lstclear(h, free), res);
-			ptr = ft_substr((*h)->content, idx, ft_strlen((*h)->content) - idx);
-			free((*h)->content);
-			(*h)->content = ft_substr(ptr, 0, ft_strlen(ptr));
-			return (free(ptr), res);
+			idx = ft_strchr(temp, '\n') - temp + 1;
+			res = ft_strjoin_free(res, ft_substr(temp, 0, idx));
+			ptr = ft_substr(temp, idx, ft_strlen(temp) - idx);
+			free(temp);
+			(*h)->content = ptr;
+			if (ptr && !*ptr)
+				return (free(ptr), free(*h), *h = buf, res);
+			return (res);
 		}
 		else
-			res = ft_strjoin_free(res, (*h)->content);
+			res = ft_strjoin_free(res, temp);
 		free(*h);
 		*h = buf;
 	}
@@ -93,21 +67,23 @@ static char	*ft_line(t_list **h, t_list *buf, char *res)
 char	*get_next_line(int fd)
 {
 	static t_list	*head[OPEN_MAX];
-	t_list		*ptr;
 	char			*buffer;
 	int				reading;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1 || fd >= OPEN_MAX)
 		return (NULL);
-	ptr = head[fd];
 	reading = 1;
-	if (!ptr || ft_strchr(ptr->content, '\n') == NULL)
-		ft_append_nodes(&ptr, fd, &reading);
-	if (reading < 0)
+	if ((!head[fd] || ft_strchr(head[fd]->content, '\n') == NULL) && \
+		ft_append_nodes(&head[fd], fd, &reading) < 0)
+		return (ft_lstclear(&head[fd], free), head[fd] = NULL, NULL);
+	if (!head[fd])
 		return (NULL);
-	buffer = ft_line(&ptr, NULL, NULL);
-	if (buffer == NULL)
-		return (ft_lstclear(&ptr, free), ptr = NULL, NULL);
-	head[fd] = ptr;
+	buffer = ft_line(&head[fd], NULL, NULL);
+	if (!buffer || !*buffer)
+	{
+		if (buffer)
+			free(buffer);
+		return (ft_lstclear(&head[fd], free), head[fd] = NULL, NULL);
+	}
 	return (buffer);
 }
