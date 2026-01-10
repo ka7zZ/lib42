@@ -53,47 +53,47 @@ The library started with the **libft** project (42's foundational C library proj
 
 ### Core Functions
 
-#### [Character Transformation](lib42/changechar/)
+#### [Character Transformation](./changechar/)
 Character case conversion functions.
 - **Concepts**: ASCII manipulation, conditional transformations
 
-#### [Character Checking](lib42/checkchar/)
+#### [Character Checking](./checkchar/)
 Character classification and validation functions.
 - **Concepts**: ASCII ranges, boolean logic, input validation
 
-#### [Memory Operations](lib42/memory/)
+#### [Memory Operations](./memory/)
 Low-level memory manipulation functions.
 - **Concepts**: Pointer arithmetic, byte-level operations, memory safety, overlapping regions
 
-#### [String Operations](lib42/strings/)
+#### [String Operations](./strings/)
 Comprehensive string manipulation and analysis functions.
 - **Concepts**: String algorithms, dynamic allocation, buffer management, parsing
 
-#### [String/Integer Conversion](lib42/strtoint/)
+#### [String/Integer Conversion](./strtoint/)
 Functions for converting between strings and integers.
 - **Concepts**: Base conversion, parsing, digit extraction, overflow handling
 
-#### [Output Functions](lib42/puts/)
+#### [Output Functions](./puts/)
 Functions for writing to file descriptors.
 - **Concepts**: File descriptors, system calls, buffered I/O
 
 ### Data Structures
 
-#### [Linked Lists](lib42/lists/)
+#### [Linked Lists](./lists/)
 Complete singly linked list implementation.
 - **Concepts**: Dynamic data structures, pointers, list traversal, memory management
 
-#### [Hash Maps](lib42/maps/)
+#### [Hash Maps](./maps/)
 Key-value storage with hash table implementation.
 - **Concepts**: Hash functions, collision handling, dynamic resizing
 
 ### Advanced Features
 
-#### [Get Next Line](lib42/get_next_line/)
+#### [Get Next Line](./get_next_line/)
 Efficient line-by-line file reading utility.
 - **Concepts**: Buffered I/O, static variables, file descriptor management
 
-#### [ft_printf](lib42/ft_printf/)
+#### [ft_printf](./ft_printf/)
 Custom implementation of printf with format specifiers and flags.
 - **Concepts**: Variadic functions, format parsing, number conversion, flag handling
 
