@@ -6,13 +6,13 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:43:16 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/10 12:18:27 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 21:04:01 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "strtoint.h"
 
-long	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long	number;
 	int		sign;
@@ -33,5 +33,7 @@ long	ft_atoi(const char *str)
 		number = number * 10 + (*str - '0');
 		str++;
 	}
+    if (number < INT_MIN || number > INT_MAX)
+        return (0);
 	return (number * sign);
 }

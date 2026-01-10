@@ -6,7 +6,7 @@
 #    By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 13:11:03 by aghergut          #+#    #+#              #
-#    Updated: 2026/01/10 18:02:49 by aghergut         ###   ########.fr        #
+#    Updated: 2026/01/10 20:25:45 by aghergut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,7 @@ SRCS7 = $(LISTS_DIR)ft_lstnew.c $(LISTS_DIR)ft_lstadd_front.c \
 	  	$(LISTS_DIR)ft_lstmap.c
 SRCS8 = $(FTPRINTF_UTILS)utils.c
 SRCS9 = $(FTPRINTF_FLAGS)ft_flagadd.c $(FTPRINTF_FLAGS)ft_flagalt.c \
-		$(FTPRINTF_FLAGS)ft_flagsign.c $(FTPRINTF_FLAGS)ft_flagspace.c \
-		$(FTPRINTF_FLAGS)ft_flagset.c
+		$(FTPRINTF_FLAGS)ft_flagsign.c $(FTPRINTF_FLAGS)ft_flagspace.c 
 SRCS10 =	$(FTPRINTF_PRINTS)ft_printchar.c $(FTPRINTF_PRINTS)ft_printstr.c  \
 			$(FTPRINTF_PRINTS)ft_printint.c  $(FTPRINTF_PRINTS)ft_printu.c  \
 			$(FTPRINTF_PRINTS)ft_printpxx.c	
