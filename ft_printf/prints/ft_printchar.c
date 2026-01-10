@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puts.h                                             :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 17:32:12 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/10 17:27:27 by aghergut         ###   ########.fr       */
+/*   Created: 2024/06/26 10:20:09 by aghergut          #+#    #+#             */
+/*   Updated: 2026/01/10 17:58:01 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUTS_H
-# define PUTS_H
+#include "../ft_printf.h"
 
-# include <unistd.h>
-# include "../strings/strings.h"
-
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(long n, int fd);
-
-#endif
+int	ft_printchar(t_flags *flags, char ch)
+{
+	if (flags->zpad)
+		ft_fill(flags->width, 1, ' ');
+	ft_putchar_fd(ch, 1);
+	if (flags->left)
+		ft_fill(flags->width, 1, ' ');
+	if (flags->width)
+		return(flags->width);
+	return (1);
+}

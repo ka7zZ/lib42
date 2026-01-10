@@ -6,7 +6,7 @@
 #    By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 13:11:03 by aghergut          #+#    #+#              #
-#    Updated: 2026/01/10 12:12:26 by aghergut         ###   ########.fr        #
+#    Updated: 2026/01/10 18:02:49 by aghergut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ MEMORY_DIR = memory/
 PUTS_DIR = puts/
 LISTS_DIR = lists/
 FTPRINTF_DIR = ft_printf/
+FTPRINTF_UTILS = ft_printf/utils/
+FTPRINTF_FLAGS = ft_printf/flags/
+FTPRINTF_PRINTS = ft_printf/prints/
 
 # Source files for each module
 SRCS0 =	$(CHANGECHAR_DIR)ft_tolower.c $(CHANGECHAR_DIR)ft_toupper.c
@@ -54,17 +57,18 @@ SRCS7 = $(LISTS_DIR)ft_lstnew.c $(LISTS_DIR)ft_lstadd_front.c \
 	  	$(LISTS_DIR)ft_lstadd_back.c $(LISTS_DIR)ft_lstdelone.c \
 	  	$(LISTS_DIR)ft_lstclear.c $(LISTS_DIR)ft_lstiter.c \
 	  	$(LISTS_DIR)ft_lstmap.c
-SRCS8 = $(FTPRINTF_DIR)ft_fill.c $(FTPRINTF_DIR)ft_flagadd.c \
-		$(FTPRINTF_DIR)ft_flagalt.c $(FTPRINTF_DIR)ft_flagsign.c \
-		$(FTPRINTF_DIR)ft_flagspace.c $(FTPRINTF_DIR)ft_gethex.c \
-		$(FTPRINTF_DIR)ft_memlen.c $(FTPRINTF_DIR)ft_numlen.c \
-		$(FTPRINTF_DIR)ft_printchar.c $(FTPRINTF_DIR)ft_printstr.c  \
-		$(FTPRINTF_DIR)ft_printint.c  $(FTPRINTF_DIR)ft_printu.c  \
-		$(FTPRINTF_DIR)ft_printpxx.c $(FTPRINTF_DIR)ft_printf.c
-SRCS9 =	$(MAPS_DIR)ft_mapitem_del.c $(MAPS_DIR)ft_mapdup.c $(MAPS_DIR)ft_map_utils.c \
-		$(MAPS_DIR)ft_mapfree.c $(MAPS_DIR)ft_mapitem_index.c \
-		$(MAPS_DIR)ft_mapitem_replace.c $(MAPS_DIR)ft_mapsize.c \
-		$(MAPS_DIR)ft_mapitem_add.c $(MAPS_DIR)ft_mapnew.c
+SRCS8 = $(FTPRINTF_UTILS)utils.c
+SRCS9 = $(FTPRINTF_FLAGS)ft_flagadd.c $(FTPRINTF_FLAGS)ft_flagalt.c \
+		$(FTPRINTF_FLAGS)ft_flagsign.c $(FTPRINTF_FLAGS)ft_flagspace.c \
+		$(FTPRINTF_FLAGS)ft_flagset.c
+SRCS10 =	$(FTPRINTF_PRINTS)ft_printchar.c $(FTPRINTF_PRINTS)ft_printstr.c  \
+			$(FTPRINTF_PRINTS)ft_printint.c  $(FTPRINTF_PRINTS)ft_printu.c  \
+			$(FTPRINTF_PRINTS)ft_printpxx.c	
+SRCS11 =	$(FTPRINTF_DIR)ft_printf.c
+SRCS12 =	$(MAPS_DIR)ft_mapitem_del.c $(MAPS_DIR)ft_mapdup.c $(MAPS_DIR)ft_map_utils.c \
+			$(MAPS_DIR)ft_mapfree.c $(MAPS_DIR)ft_mapitem_index.c \
+			$(MAPS_DIR)ft_mapitem_replace.c $(MAPS_DIR)ft_mapsize.c \
+			$(MAPS_DIR)ft_mapitem_add.c $(MAPS_DIR)ft_mapnew.c
 
 # Object directories
 OBJS_DIR_CHANGECHAR = $(CHANGECHAR_DIR)o_files/
@@ -87,10 +91,11 @@ OBJS =  $(SRCS0:$(CHANGECHAR_DIR)%.c=$(OBJS_DIR_CHANGECHAR)%.o) \
 		$(SRCS5:$(MEMORY_DIR)%.c=$(OBJS_DIR_MEMORY)%.o) \
 		$(SRCS6:$(PUTS_DIR)%.c=$(OBJS_DIR_PUTS)%.o) \
 		$(SRCS7:$(LISTS_DIR)%.c=$(OBJS_DIR_LISTS)%.o) \
-		$(SRCS8:$(FTPRINTF_DIR)%.c=$(OBJS_DIR_FTPRINTF)%.o) \
-		$(SRCS9:$(MAPS_DIR)%.c=$(OBJS_DIR_MAPS)%.o)
-
-INCLUDES = -I.
+		$(SRCS8:$(FTPRINTF_UTILS)%.c=$(OBJS_DIR_FTPRINTF)%.o) \
+		$(SRCS9:$(FTPRINTF_FLAGS)%.c=$(OBJS_DIR_FTPRINTF)%.o) \
+		$(SRCS10:$(FTPRINTF_PRINTS)%.c=$(OBJS_DIR_FTPRINTF)%.o) \
+		$(SRCS11:$(FTPRINTF_DIR)%.c=$(OBJS_DIR_FTPRINTF)%.o) \
+		$(SRCS12:$(MAPS_DIR)%.c=$(OBJS_DIR_MAPS)%.o)
 
 # Default target
 all: $(NAME)
@@ -135,6 +140,18 @@ $(OBJS_DIR_LISTS)%.o: $(LISTS_DIR)%.c
 
 $(OBJS_DIR_FTPRINTF)%.o: $(FTPRINTF_DIR)%.c
 	@mkdir -p $(OBJS_DIR_FTPRINTF)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJS_DIR_FTPRINTF)%.o: $(FTPRINTF_UTILS)%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJS_DIR_FTPRINTF)%.o: $(FTPRINTF_FLAGS)%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJS_DIR_FTPRINTF)%.o: $(FTPRINTF_PRINTS)%.c
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJS_DIR_MAPS)%.o: $(MAPS_DIR)%.c

@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:52:14 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/09 12:29:47 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 17:25:14 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "../strings/strings.h"
 # include "../puts/puts.h"
 
-// printf flags
+//  FLAGS STRUCT
 typedef struct s_flags
 {
 	int	prec;
@@ -37,19 +37,23 @@ typedef struct s_flags
 	int	width;
 }	t_flags;
 
+//  UTILS
+int			ft_fill(int cond1, int cond2, char fill);
+int			ft_gethex(unsigned long long mem, char type);
+int			ft_memlen(unsigned long long mem);
+int			ft_numlen(long n);
+//  FLAGS
 const char	*ft_flagadd(va_list *args, t_flags *flags, const char *format);
 int			ft_flagalt(t_flags *flags, char type);
 int			ft_flagsign(t_flags *flags, char type, int n);
 int			ft_flagspace(t_flags *flags, char type, int n);
+//  PRINTS
 int			ft_printchar(t_flags *flags, char ch);
 int			ft_printint(t_flags *flags, int number, char type);
 int			ft_printpxx(va_list *args, t_flags *flags, char type);
 int			ft_printstr(t_flags *flags, char *content);
 int			ft_printu(t_flags *flags, unsigned int number);
+//  MAIN
 int			ft_printf(const char *format, ...);
-int			ft_fill(int cond1, int cond2, char fill);
-int			ft_gethex(unsigned long long mem, char type);
-int			ft_memlen(unsigned long long mem);
-int			ft_numlen(long n);
 
 #endif

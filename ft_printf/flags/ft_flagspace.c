@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puts.h                                             :+:      :+:    :+:   */
+/*   ft_flagspace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 17:32:12 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/10 17:27:27 by aghergut         ###   ########.fr       */
+/*   Created: 2024/06/25 15:59:34 by aghergut          #+#    #+#             */
+/*   Updated: 2026/01/10 17:58:31 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUTS_H
-# define PUTS_H
+#include "../ft_printf.h"
 
-# include <unistd.h>
-# include "../strings/strings.h"
-
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(long n, int fd);
-
-#endif
+int	ft_flagspace(t_flags *flags, char type, int n)
+{
+	if (flags->space == 1 && ft_strchr("pid", type))
+	{
+		if (type == 'p' || n >= 0)
+		{
+			ft_putchar_fd(' ', 1);
+			return (1);
+		}
+	}
+	return (0);
+}

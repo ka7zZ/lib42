@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puts.h                                             :+:      :+:    :+:   */
+/*   ft_flagalt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 17:32:12 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/10 17:27:27 by aghergut         ###   ########.fr       */
+/*   Created: 2024/06/25 15:58:12 by aghergut          #+#    #+#             */
+/*   Updated: 2026/01/10 17:58:23 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUTS_H
-# define PUTS_H
+#include "../ft_printf.h"
 
-# include <unistd.h>
-# include "../strings/strings.h"
-
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(long n, int fd);
-
-#endif
+int	ft_flagalt(t_flags *flags, char type)
+{
+	if (type == 'p')
+		write(1, "0x", 2);
+	if (type == 'x' && flags->alt > 0)
+		write(1, "0x", 2);
+	if (type == 'X' && flags->alt > 0)
+		write(1, "0X", 2);
+	return (2);
+}
