@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:32:16 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/15 18:10:06 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:56:27 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ void	ft_bzero(void *s, size_t n)
 		cast[i] = 0;
 		i++;
 	}
-	s = cast;
 }

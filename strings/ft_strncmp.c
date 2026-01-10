@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:04:50 by aghergut          #+#    #+#             */
-/*   Updated: 2025/10/04 12:37:57 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:54:48 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	unsigned char	*cs2;
 	size_t			i;
 
-	if (n == 0 || !s1 || !s2)
+	if (!n)
 		return (0);
 	cs1 = (unsigned char *)s1;
 	cs2 = (unsigned char *)s2;

@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 20:12:06 by aghergut          #+#    #+#             */
-/*   Updated: 2025/11/03 21:35:20 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:25:03 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_mapitem_index(char **map, char *str)
 	size_t	sv_len;
 	size_t	idx;
 
-	if (!map || !*map || !str || !*str)
+	if (!map || !str || !*str)
 		return (-1);
 	sv_len = right_length(str);
 	idx = 0;

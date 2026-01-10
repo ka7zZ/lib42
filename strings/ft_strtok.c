@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 12:45:52 by aghergut          #+#    #+#             */
-/*   Updated: 2025/11/01 11:51:14 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 12:06:18 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static char	*failed_malloc(void)
 {
-	write(1, "Failed malloc!\n", sizeof("Failed malloc!\n") - 1);
+    char    *msg;
+
+    msg = "Failed malloc!\n";
+	write(1, msg, ft_strlen(msg));
 	return (NULL);
 }
 

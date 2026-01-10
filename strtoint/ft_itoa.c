@@ -6,24 +6,25 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:31:15 by aghergut          #+#    #+#             */
-/*   Updated: 2025/02/13 15:56:04 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 12:44:52 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "strtoint.h"
 
-static int	v_length(long value)
+static int	count_digits(int value)
 {
 	int	len;
 
-	if (value < INT_MIN || value > INT_MAX)
-		return (0);
-	len = 1;
-	if (value < 10)
-		return (len);
+	if (value == 0)
+		return (1);
+	len = 0;
 	if (value < 0)
-		value *= -1;
-	while (value > 9)
+	{
+		len = 1;
+		value = value * -1;
+	}
+	while (value != 0)
 	{
 		value /= 10;
 		len++;
@@ -31,43 +32,28 @@ static int	v_length(long value)
 	return (len);
 }
 
-static char	*v_str(int len, int value, int kind)
+char	*ft_itoa(int value)
 {
-	char	*number;
+	char    *number;
+	int		len;
 
-	if (kind == 0)
-		number = ft_calloc((len + 2), sizeof(char));
-	else
-	{
-		number = ft_calloc((len + 1), sizeof(char));
-		len--;
-	}
-	if (!number)
-		return (0);
-	while (len >= 0)
-	{
-		if (len == 0 && kind == 0)
-		{
-			number[len] = '-';
-			return (number);
-		}
-		number[len] = (value % 10) + '0';
-		value /= 10;
-		len--;
-	}
-	return (number);
-}
-
-char	*ft_itoa(long value)
-{
-	if (!v_length(value))
-		return (NULL);
 	if (value == -2147483648)
 		return (ft_strdup("-2147483648"));
+	len = count_digits(value);
+	number = ft_calloc(len + 1, sizeof(char));
+	if (!number)
+		return (NULL);
 	if (value < 0)
 	{
-		value *= -1;
-		return (v_str(v_length(value), value, 0));
+		number[0] = '-';
+		value = value * -1;
 	}
-	return (v_str(v_length(value), value, 1));
+	if (value == 0)
+		number[0] = '0';
+	while (value)
+	{
+		number[--len] = (value % 10) + '0';
+		value = value / 10;
+	}
+	return (number);
 }

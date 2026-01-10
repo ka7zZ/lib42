@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:46:15 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 15:33:52 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:12:58 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@ size_t	ft_lstsize(t_list *lst)
 {
 	size_t	count;
 
-	if (lst)
+	count = 0;
+	while (lst)
 	{
-		count = 0;
-		while (lst != NULL)
-		{
-			count++;
-			lst = lst->next;
-		}
-		return (count);
+		count++;
+		lst = lst->next;
 	}
-	return (0);
+	return (count);
 }

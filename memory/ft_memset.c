@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:34 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/15 17:42:00 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:40:17 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	*ft_memset(void *str, int c, size_t n)
 		c_str[i] = (unsigned char)c;
 		i++;
 	}
-	return (str = c_str);
+	return (str);
 }

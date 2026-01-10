@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:23 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/15 17:17:30 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:31:28 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (res + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

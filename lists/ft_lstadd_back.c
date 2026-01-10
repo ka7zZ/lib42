@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:45:22 by aghergut          #+#    #+#             */
-/*   Updated: 2025/01/04 15:54:29 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 10:52:53 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new_node)
 		*lst = new_node;
 	else
 	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
+		temp = ft_lstlast(*lst);
 		temp->next = new_node;
 	}
 }

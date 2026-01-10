@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:46:10 by aghergut          #+#    #+#             */
-/*   Updated: 2025/11/03 19:27:47 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:11:27 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ t_list	*ft_lstnew(void *content)
 	node = (t_list *) malloc(sizeof(t_list));
 	if (!node)
 		return (NULL);
-	if (content)
-	{
-		node->content = content;
-		node->next = NULL;
-		return (node);
-	}
-	return (free(node), NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }

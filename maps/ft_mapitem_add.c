@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 10:49:39 by aghergut          #+#    #+#             */
-/*   Updated: 2025/11/04 00:30:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:24:56 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,21 @@
 
 int	ft_mapitem_add(char ***map_ref, char *item)
 {
-	char	**map;
 	char	**new;
 
 	if (!map_ref)
 		return (0);
-	map = *map_ref;
-	if (map == NULL)
+	if (*map_ref == NULL)
 	{
 		*map_ref = ft_mapnew(item);
 		if (*map_ref == NULL)
 			return (0);
 		return (1);
 	}
-	new = create_new(map, item);
-	if (new != NULL)
-	{
-		ft_mapfree(map_ref);
-		*map_ref = new;
-		return (1);
-	}
-	return (0);
+	new = create_new(*map_ref, item);
+	if (!new)
+		return (0);
+	ft_mapfree(map_ref);
+	*map_ref = new;
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:16:59 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/09 13:39:06 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:03:55 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,11 @@ static int	ft_parse_main(va_list *args, t_flags *flags, const char *format)
 int	ft_printf(const char *format, ...)
 {
 	va_list	pv;
-	t_flags	*flags;
+	t_flags	flags;
 	int		width;
 
-	flags = malloc(sizeof(t_flags));
-	if (!flags)
-		return (0);
 	va_start(pv, format);
-	width = ft_parse_main(&pv, flags, format);
-	free(flags);
+	width = ft_parse_main(&pv, &flags, format);
 	va_end(pv);
 	return (width);
 }

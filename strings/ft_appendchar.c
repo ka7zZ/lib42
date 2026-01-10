@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:50:23 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/09 14:11:33 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 12:04:23 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_appendchar(char *str, char ch)
 	size_t	new_size;
 	size_t	i;
 
-	if (!str || !*str)
+	if (!str)
 		new_size = 1;
 	else
 		new_size = ft_strlen(str) + 1;
@@ -34,6 +34,5 @@ char	*ft_appendchar(char *str, char ch)
 	new[i++] = ch;
 	new[i] = '\0';
 	free(str);
-	str = NULL;
 	return (new);
 }

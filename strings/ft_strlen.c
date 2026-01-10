@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:28 by aghergut          #+#    #+#             */
-/*   Updated: 2025/10/28 23:47:47 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:19:17 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (!str || !*str)
+	if (!str)
 		return (i);
 	while (str[i])
 		i++;

@@ -6,7 +6,7 @@
 #    By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 13:11:03 by aghergut          #+#    #+#              #
-#    Updated: 2026/01/09 14:12:19 by aghergut         ###   ########.fr        #
+#    Updated: 2026/01/10 12:12:26 by aghergut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,13 +43,12 @@ SRCS4 = $(STRINGS_DIR)ft_strchr.c $(STRINGS_DIR)ft_strlcat.c \
 	  	$(STRINGS_DIR)ft_strmapi.c $(STRINGS_DIR)ft_strncat.c \
 	  	$(STRINGS_DIR)ft_striteri.c $(STRINGS_DIR)ft_calloc.c \
 	  	$(STRINGS_DIR)ft_bzero.c $(STRINGS_DIR)ft_strtok.c \
-		$(STRINGS_DIR)ft_strjoin_free.c $(STRINGS_DIR)ft_appendchar.c
+		$(STRINGS_DIR)ft_appendchar.c
 SRCS5 = $(MEMORY_DIR)ft_memset.c $(MEMORY_DIR)ft_memcpy.c \
 	  	$(MEMORY_DIR)ft_memmove.c $(MEMORY_DIR)ft_memchr.c \
 	  	$(MEMORY_DIR)ft_memcmp.c
 SRCS6 = $(PUTS_DIR)ft_putchar_fd.c $(PUTS_DIR)ft_putstr_fd.c \
-	  	$(PUTS_DIR)ft_putendl_fd.c $(PUTS_DIR)ft_putnbr_fd.c \
-	  	$(PUTS_DIR)ft_putuint.c
+	  	$(PUTS_DIR)ft_putendl_fd.c $(PUTS_DIR)ft_putnbr_fd.c
 SRCS7 = $(LISTS_DIR)ft_lstnew.c $(LISTS_DIR)ft_lstadd_front.c \
 	  	$(LISTS_DIR)ft_lstsize.c $(LISTS_DIR)ft_lstlast.c \
 	  	$(LISTS_DIR)ft_lstadd_back.c $(LISTS_DIR)ft_lstdelone.c \
@@ -81,15 +80,15 @@ OBJS_DIR_FTPRINTF = $(FTPRINTF_DIR)o_files/
 
 # Object files with correct paths
 OBJS =  $(SRCS0:$(CHANGECHAR_DIR)%.c=$(OBJS_DIR_CHANGECHAR)%.o) \
-        $(SRCS1:$(CHECKCHAR_DIR)%.c=$(OBJS_DIR_CHECKCHAR)%.o) \
-        $(SRCS2:$(STRTOINT_DIR)%.c=$(OBJS_DIR_STRTOINT)%.o) \
-        $(SRCS3:$(GET_NEXT_LINE_DIR)%.c=$(OBJS_DIR_GET_NEXT_LINE)%.o) \
-        $(SRCS4:$(STRINGS_DIR)%.c=$(OBJS_DIR_STRINGS)%.o) \
-        $(SRCS5:$(MEMORY_DIR)%.c=$(OBJS_DIR_MEMORY)%.o) \
-        $(SRCS6:$(PUTS_DIR)%.c=$(OBJS_DIR_PUTS)%.o) \
-        $(SRCS7:$(LISTS_DIR)%.c=$(OBJS_DIR_LISTS)%.o) \
-        $(SRCS8:$(FTPRINTF_DIR)%.c=$(OBJS_DIR_FTPRINTF)%.o) \
-        $(SRCS9:$(MAPS_DIR)%.c=$(OBJS_DIR_MAPS)%.o)
+		$(SRCS1:$(CHECKCHAR_DIR)%.c=$(OBJS_DIR_CHECKCHAR)%.o) \
+		$(SRCS2:$(STRTOINT_DIR)%.c=$(OBJS_DIR_STRTOINT)%.o) \
+		$(SRCS3:$(GET_NEXT_LINE_DIR)%.c=$(OBJS_DIR_GET_NEXT_LINE)%.o) \
+		$(SRCS4:$(STRINGS_DIR)%.c=$(OBJS_DIR_STRINGS)%.o) \
+		$(SRCS5:$(MEMORY_DIR)%.c=$(OBJS_DIR_MEMORY)%.o) \
+		$(SRCS6:$(PUTS_DIR)%.c=$(OBJS_DIR_PUTS)%.o) \
+		$(SRCS7:$(LISTS_DIR)%.c=$(OBJS_DIR_LISTS)%.o) \
+		$(SRCS8:$(FTPRINTF_DIR)%.c=$(OBJS_DIR_FTPRINTF)%.o) \
+		$(SRCS9:$(MAPS_DIR)%.c=$(OBJS_DIR_MAPS)%.o)
 
 INCLUDES = -I.
 

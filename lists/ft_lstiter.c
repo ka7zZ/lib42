@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:45:54 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/15 18:08:56 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:04:00 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*temp;
-
-	if (lst)
+	if (!f)
+		return ;
+	while (lst != NULL)
 	{
-		temp = lst;
-		while (temp != NULL)
-		{
-			if (temp->content)
-				f(temp->content);
-			temp = temp->next;
-		}
+		f(lst->content);
+		lst = lst->next;
 	}
 }

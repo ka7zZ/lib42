@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:17:27 by aghergut          #+#    #+#             */
-/*   Updated: 2024/10/16 16:11:41 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:46:25 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	int	len;
-
 	if (!str)
 		return ;
-	len = 0;
-	while (str[len])
-		len++;
-	write(fd, str, len);
+	write(fd, str, ft_strlen(str));
 }

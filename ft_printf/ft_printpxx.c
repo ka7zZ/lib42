@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:18:55 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/09 14:37:23 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:15:49 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_precpxx(t_flags *flags, unsigned long long mem, int len, char f)
 static int	ft_hex_output(t_flags *flags, unsigned long long mem, char type)
 {
 	int	len;
-	int print_len;
+	int	print_len;
 	
 	len = ft_memlen(mem);
 	if (mem == 0)

@@ -6,11 +6,23 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:20:34 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/09 13:33:09 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 12:11:47 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	ft_putuint(unsigned int value, int length)
+{
+	char	c;
+
+	if (length > 0)
+	{
+		ft_putuint(value / 10, length - 1);
+		c = (value % 10) + '0';
+		write(1, &c, 1);
+	}
+}
 
 static int	ft_precu(t_flags *flags, unsigned int n, int num_len)
 {

@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 15:18:36 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/09 12:29:53 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:16:22 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static const char	*ft_wflags(va_list *args, t_flags *flags, const char *f)
 	{
 		flags->left = 1;
 		f++;
-		
 	}
 	if (*f == '0')
 	{

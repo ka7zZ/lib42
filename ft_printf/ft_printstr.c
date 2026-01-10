@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:18:21 by aghergut          #+#    #+#             */
-/*   Updated: 2026/01/09 13:15:23 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:06:03 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ static int	ft_nullcase(t_flags *flags)
 int	ft_printstr(t_flags *flags, char *content)
 {
 	int	len;
-    int print_len;
-    
+	int print_len;
+
 	if (!content)
 		return (ft_nullcase(flags));
 	len = ft_strlen(content);
 	print_len = len;
-    if (flags->prec && flags->precw < len)
-        print_len = flags->precw;
-    len = print_len;
-    if (!flags->left)
-        len = ft_fill(flags->width, print_len, ' ');
-    write(1, content, print_len);
-    if (flags->left)
+	if (flags->prec && flags->precw < len)
+		print_len = flags->precw;
+	len = print_len;
+	if (!flags->left)
+		len = ft_fill(flags->width, print_len, ' ');
+	write(1, content, print_len);
+	if (flags->left)
 		len += ft_fill(flags->width, print_len, ' ');
-    return (len);
+	return (len);
 }
