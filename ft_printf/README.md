@@ -37,7 +37,7 @@ Recreate the behavior of `printf()` from scratch, handling variable arguments, f
   ```
 - This struct centralizes all formatting information for each conversion
 
-## 🔧 Technical Implementation
+## Technical Implementation
 
 ### Algorithm Overview
 
