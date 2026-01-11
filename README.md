@@ -66,7 +66,7 @@ For detailed documentation of each module, see the README files in respective fo
 - **[get_next_line/](get_next_line/README.md)** - File reading utilities  
 - **[lists/](lists/README.md)** - Linked list data structure
 - **[memory/](memory/README.md)** - Memory operations
-
+- **[maps/](maps/README.md)** - Two dimensional arrays operations
 ---
 
 ## Compilation & Usage
